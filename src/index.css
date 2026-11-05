@@ -116,10 +116,14 @@ body::before {
 body::after {
   content: '';
   position: fixed;
-  inset: 0;
+  /* square, and as tall as the whole phone screen (also behind the browser bars) */
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  height: 100lvh;
   z-index: 99;
   pointer-events: none;
-  border-radius: 28px;
   box-shadow: inset 0 0 44px 6px color-mix(in srgb, var(--vig) var(--vig-amt), transparent);
 }
 /* edge-only blur: four linear bands (one per side) so it follows the rectangle */
