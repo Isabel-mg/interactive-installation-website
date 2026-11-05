@@ -15,7 +15,8 @@ export const MAX_SCORE = STATIONS.length * 2
 
 export type EndingKey = 'deny' | 'mixed' | 'accept'
 
-// Placeholder video for every ending until the animations are done (YouTube video id)
+// Ending videos: a file in public/videos (e.g. 'videos/ending-1.mp4', plays muted with the ending song)
+// or a YouTube video id. PLACEHOLDER_VIDEO is used until an animation is ready.
 export const PLACEHOLDER_VIDEO = 'dQw4w9WgXcQ'
 
 // Each ending has a passcode word. Phone folder 7 shows the word; the visitor types it on the
@@ -25,7 +26,7 @@ export const ENDINGS: Record<EndingKey, { title: L; passcode: L; video: string; 
   deny: {
     title: { en: 'Ending 1 — Blind Ignorance', ko: '결말 1 — 맹목적 무지' },
     passcode: { en: 'ERASED', ko: 'ERASED' }, // TODO(CONTENT): final passcode
-    video: PLACEHOLDER_VIDEO, // TODO(CONTENT): ending animation
+    video: 'videos/ending-1-ignorance.mp4', // plays muted; the ending song loops underneath
     log: {
       en: [
         `There are those who fight through the dark just to glimpse the brilliance of the sun. But I think fighting what has already happened is a waste of time. I shouldn't take it so seriously, right? Everybody told me to chill out and stop thinking about it so hard. Maybe they're right. Maybe fighting back will only hurt more.`,

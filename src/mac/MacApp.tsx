@@ -84,8 +84,15 @@ function matchCode(raw: string, lang: 'en' | 'ko'): Ending | null {
   return null
 }
 
-function MusicFor(e: Ending | null, playing: boolean): AmbienceName | null {
-  if (!e || playing) return null // the video brings its own sound
+// A video stored in public/videos plays in the browser with no sound of its own
+// (the ending song keeps looping underneath). Anything else is a YouTube video id.
+function isLocalVideo(video?: string) {
+  return !!video && /\.(mp4|mov|webm)$/i.test(video)
+}
+
+function MusicFor(e: Ending | null, playing: boolean, video?: string): AmbienceName | null {
+  if (!e) return null
+  if (playing && !isLocalVideo(video)) return null // a YouTube video brings its own sound
   return e === 'deny' ? 'endingSink' : e === 'mixed' ? 'endingCheck' : e === 'accept' ? 'endingLeap' : null
 }
 
@@ -141,12 +148,12 @@ function Desktop() {
     }
   }, [reset])
 
-  // ending music while the log is on screen; silence once the video plays
-  useEffect(() => {
-    setAmbience(MusicFor(ending, playing))
-  }, [ending, playing])
-
   const data = ending ? (ending === 'secret' ? SECRET_ENDING : ENDINGS[ending]) : null
+
+  // ending music while the log is on screen, and on a loop under a silent local video
+  useEffect(() => {
+    setAmbience(MusicFor(ending, playing, data?.video))
+  }, [ending, playing, data?.video])
   const topWin = open[open.length - 1]
   const clock = now.toLocaleString(lang === 'ko' ? 'ko-KR' : 'en-US', {
     weekday: 'short',
@@ -394,6 +401,18 @@ function Player({
     return (
       <div className="space-y-3 p-3">
         <div className="aspect-video w-full overflow-hidden rounded-lg border-[3px] border-ink bg-black">
+          {isLocalVideo(video) ? (
+            <video
+              className="h-full w-full object-contain"
+              src={import.meta.env.BASE_URL + video}
+              autoPlay
+              muted
+              playsInline
+              controls
+              controlsList="nodownload noplaybackrate"
+              disablePictureInPicture
+            />
+          ) : (
           <iframe
             className="h-full w-full"
             src={`https://www.youtube-nocookie.com/embed/${video}?autoplay=1&rel=0&modestbranding=1`}
@@ -401,6 +420,7 @@ function Player({
             allow="autoplay; encrypted-media; fullscreen"
             allowFullScreen
           />
+          )}
         </div>
         <button onClick={onReset} className={btn}>
           {tx(X.eject)}
