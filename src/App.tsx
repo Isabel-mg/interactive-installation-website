@@ -43,16 +43,16 @@ function Shell() {
       className="relative z-10 mx-auto min-h-dvh max-w-[440px] border-x border-rule bg-paper/90 backdrop-blur-[3px]"
       style={{ paddingLeft: 'env(safe-area-inset-left)', paddingRight: 'env(safe-area-inset-right)' }}
     >
-      {/* paddingTop keeps the title and controls clear of the phone camera / notch (at least 2.25rem even without a safe-area value) */}
-      <div className="sticky top-0 z-40 bg-paper" style={{ paddingTop: 'max(2.6rem, calc(env(safe-area-inset-top) + 0.75rem))' }}>
-        <header className="flex items-center justify-between gap-2 border-b border-rule px-4 py-2">
+      {/* paddingTop keeps the title and controls clear of the phone camera / notch (uses the phone's real notch size, small gap otherwise) */}
+      <div className="sticky top-0 z-40 bg-paper" style={{ paddingTop: 'max(0.5rem, calc(env(safe-area-inset-top) + 0.25rem))' }}>
+        <header className="flex items-center justify-between gap-2 border-b border-rule px-4 py-1.5">
           <button
             onClick={() => j.entered && setView({ kind: 'home' })}
             className="min-w-0 text-left"
             aria-label={room()}
           >
             {/* Project name: "___'s room" until a name is saved, then "Ana's room" */}
-            <span className="block truncate font-display text-[26px] leading-[1.1]"><RoomTitle /></span>
+            <span className="block truncate font-display text-[22px] leading-[1.1]"><RoomTitle /></span>
           </button>
           <Controls />
         </header>

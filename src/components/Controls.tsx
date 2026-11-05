@@ -2,7 +2,7 @@ import Help from './Help'
 import { useJournal, useT } from '../state/journal'
 
 const btn =
-  'label flex h-7 min-w-7 items-center justify-center border border-rule px-1.5 leading-none transition-colors hover:bg-btn hover:text-btn-ink'
+  'label flex h-6 min-w-6 items-center justify-center border border-rule px-1.5 leading-none transition-colors hover:bg-btn hover:text-btn-ink'
 
 // Language, theme and whisper toggles
 export default function Controls() {
