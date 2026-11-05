@@ -31,6 +31,11 @@ jobs:
         env:
           BASE_PATH: /${{ github.event.repository.name }}/
       # Lets /mac (the desk computer page) load directly on GitHub Pages
+      # Second copy without the dev button, at /visitor/
+      - run: pnpm build --outDir dist/visitor
+        env:
+          BASE_PATH: /${{ github.event.repository.name }}/visitor/
+          VITE_HIDE_DEV: '1'
       - run: cp dist/index.html dist/404.html
       - uses: actions/upload-pages-artifact@v3
         with:

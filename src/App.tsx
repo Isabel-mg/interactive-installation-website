@@ -72,7 +72,7 @@ function Shell() {
         style={{ textTransform: 'none', paddingBottom: 'max(0.75rem, env(safe-area-inset-bottom))' }}
       >{t.footer}</footer>
       {/* TEMPORARY: remove before launch */}
-      <DevPanel go={setView} />
+      {import.meta.env.VITE_HIDE_DEV !== '1' && <DevPanel go={setView} />}
     </div>
   )
 }
