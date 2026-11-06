@@ -68,7 +68,7 @@ function Panel({ go }: { go: (v: View) => void }) {
           </span>
         </li>
       </ul>
-      <a href="/mac" target="_blank" rel="noreferrer" className="label block border-t border-rule px-2 py-1.5 text-center underline">
+      <a href={import.meta.env.BASE_URL + "#/mac"} target="_blank" rel="noreferrer" className="label block border-t border-rule px-2 py-1.5 text-center underline">
         open desk computer /mac
       </a>
       <div className="flex gap-1 border-t border-rule px-2 py-1.5">
