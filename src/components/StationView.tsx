@@ -172,7 +172,14 @@ export default function StationView({ id, go }: { id: number; go: (v: View) => v
             {typed && (
               <div className="rise">
                 {/* narrator line sits between the log and the choices; it changes once an answer is given */}
-                <InlineNarrator text={choice ? tx(LINES.choiceMade[choice]) : tx(station.prompt)} />
+                {/* each answer has its own response; the generic line is only a fallback */}
+                <InlineNarrator
+                  text={
+                    choice
+                      ? tx(station.options?.find((o) => o.choice === choice)?.response ?? LINES.choiceMade[choice])
+                      : tx(station.prompt)
+                  }
+                />
 
                 <div className="border-2 border-rule p-3">
                   <div className="mb-3 flex items-center justify-between">

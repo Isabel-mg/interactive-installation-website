@@ -26,7 +26,8 @@ export interface Station {
   prompt: L
   // optional picture shown at the top of the log, styled as a faded print
   // the three answers, in display order. Points come from the choice (deny 0, mixed 1, accept 2)
-  options?: { choice: Choice; text: L }[]
+  // response = the narrator's line shown after that answer is chosen
+  options?: { choice: Choice; text: L; response?: L }[]
   image?: { src: string; alt: L; caption: L }
 }
 
@@ -79,9 +80,9 @@ export const STATIONS: Station[] = [
       ko: `밤이 깊었고, 인형들이 또다시 당신 곁에 바짝 붙어 있어요. {name}, 왜 그것들을 여기에 두었나요?`,
     },
     options: [
-      { choice: 'mixed', text: { en: `I put the others back on the shelf but keep the broken one. I can’t tell if I’m holding it for comfort or because I’m afraid to let go.`, ko: `다른 인형들은 선반에 다시 올려놓지만, 망가진 하나는 곁에 둔다. 위로가 돼서 붙잡고 있는 건지, 놓기가 무서워서인지 나도 모르겠다.` } },
-      { choice: 'accept', text: { en: `I clear the bed completely, even the broken one. If nothing is going to touch me, then it’s my choice this time, not his.`, ko: `망가진 것까지 전부 침대에서 치운다. 아무것도 나를 건드리지 않게 할 거라면, 이번만큼은 그가 아니라 내가 정한다.` } },
-      { choice: 'deny', text: { en: `I pull the blanket over my head and hold them tighter. I’m safer boxed in, and if I never ask why I need them, I never have to hear the answer.`, ko: `이불을 머리끝까지 뒤집어쓰고 인형들을 더 꽉 끌어안는다. 이렇게 갇혀 있는 게 더 안전하다. 왜 이것들이 필요한지 묻지 않으면, 그 답을 들을 일도 없으니까.` } },
+      { choice: 'mixed', text: { en: `I put the others back on the shelf but keep the broken one. I can’t tell if I’m holding it for comfort or because I’m afraid to let go.`, ko: `다른 인형들은 선반에 다시 올려놓지만, 망가진 하나는 곁에 둔다. 위로가 돼서 붙잡고 있는 건지, 놓기가 무서워서인지 나도 모르겠다.` }, response: { en: `The shelf looks crowded again. The broken one is still here, and you’re not sure who you’re keeping it for… You don’t have to decide yet.`, ko: `선반이 다시 북적여 보여요. 망가진 인형은 아직 여기 있고, 누구를 위해 간직하는 건지 당신도 잘 모르겠죠… 아직 정하지 않아도 돼요.` } },
+      { choice: 'accept', text: { en: `I clear the bed completely, even the broken one. If nothing is going to touch me, then it’s my choice this time, not his.`, ko: `망가진 것까지 전부 침대에서 치운다. 아무것도 나를 건드리지 않게 할 거라면, 이번만큼은 그가 아니라 내가 정한다.` }, response: { en: `The bed is empty now. You can’t help feeling like it’s colder. That’s normal.`, ko: `이제 침대가 텅 비었어요. 왠지 더 차갑게 느껴지죠. 그건 당연한 거예요.` } },
+      { choice: 'deny', text: { en: `I pull the blanket over my head and hold them tighter. I’m safer boxed in, and if I never ask why I need them, I never have to hear the answer.`, ko: `이불을 머리끝까지 뒤집어쓰고 인형들을 더 꽉 끌어안는다. 이렇게 갇혀 있는 게 더 안전하다. 왜 이것들이 필요한지 묻지 않으면, 그 답을 들을 일도 없으니까.` }, response: { en: `It’s dark under here, and warm. You tell yourself that’s enough. And it is.`, ko: `이불 속은 어둡고, 따뜻해요. 이 정도면 충분하다고 스스로에게 말해요. 그리고 정말 그래요.` } },
     ],
   },
   {
@@ -120,9 +121,9 @@ export const STATIONS: Station[] = [
       ko: `당신은 네 번째 테스트기를 들고 있어요. 바로 옆에는 자나의 알약이 놓여 있고, 진정하라던 그녀의 말이 계속 귓가에 맴돌아요.`,
     },
     options: [
-      { choice: 'deny', text: { en: `I take one without checking what it is. If Jana says it’s nothing, it’s nothing.`, ko: `뭔지 확인도 하지 않고 하나를 삼킨다. 자나가 별거 아니라고 했으니까, 별거 아닌 거다.` } },
-      { choice: 'accept', text: { en: `I don’t touch the pills. I don’t even know what they are. I’ll go to a real clinic, even if someone recognizes me.`, ko: `알약에는 손대지 않는다. 뭔지도 모르는 약이다. 누가 나를 알아보더라도, 제대로 된 병원에 가겠다.` } },
-      { choice: 'mixed', text: { en: `I take one so she won’t think I’m making a scene, but I keep the tests in the drawer. Being told I’m fine doesn’t make me believe it.`, ko: `유난 떤다는 소리를 듣기 싫어서 하나를 먹지만, 테스트기는 서랍에 그대로 둔다. 괜찮다는 말을 듣는다고 정말 괜찮아지는 건 아니니까.` } },
+      { choice: 'deny', text: { en: `I take one without checking what it is. If Jana says it’s nothing, it’s nothing.`, ko: `뭔지 확인도 하지 않고 하나를 삼킨다. 자나가 별거 아니라고 했으니까, 별거 아닌 거다.` }, response: { en: `You swallowed the pill, and it went down easy. You didn’t even have a second thought. If Jana says it’s okay, then it is.`, ko: `알약을 삼켰어요. 쉽게 넘어갔죠. 다시 생각해 보지도 않았어요. 자나가 괜찮다고 했으면, 괜찮은 거예요.` } },
+      { choice: 'accept', text: { en: `I don’t touch the pills. I don’t even know what they are. I’ll go to a real clinic, even if someone recognizes me.`, ko: `알약에는 손대지 않는다. 뭔지도 모르는 약이다. 누가 나를 알아보더라도, 제대로 된 병원에 가겠다.` }, response: { en: `You threw the pills in the trash, and you can feel your body shaking. You wish you could believe Jana. She only wanted to help.`, ko: `알약을 쓰레기통에 버렸어요. 몸이 떨리는 게 느껴져요. 자나의 말을 믿을 수 있으면 좋을 텐데. 자나는 그저 도와주고 싶었을 뿐이에요.` } },
+      { choice: 'mixed', text: { en: `I take one so she won’t think I’m making a scene, but I keep the tests in the drawer. Being told I’m fine doesn’t make me believe it.`, ko: `유난 떤다는 소리를 듣기 싫어서 하나를 먹지만, 테스트기는 서랍에 그대로 둔다. 괜찮다는 말을 듣는다고 정말 괜찮아지는 건 아니니까.` }, response: { en: `You swallowed the pill to satisfy Jana, but you kept the tests in the drawer. You can’t tell if you’re lying to yourself. It’s probably nothing.`, ko: `자나를 안심시키려고 알약을 삼켰지만, 테스트기는 서랍에 그대로 두었어요. 스스로를 속이고 있는 건지 잘 모르겠죠. 아마 별일 아닐 거예요.` } },
     ],
   },
   {
@@ -161,9 +162,9 @@ export const STATIONS: Station[] = [
       ko: `자나는 당신이 선물에 대해 뭐라고 말하기를 기다리고 있어요. 그림 속 사람들은 행복해 보이는데, 당신은 그게 어떤 기분이었는지 기억나지 않아요…`,
     },
     options: [
-      { choice: 'deny', text: { en: `I tell her I love it and laugh like the old me. I’m already the “no fun” one, and I can’t lose her too.`, ko: `정말 마음에 든다고 말하고, 예전의 나처럼 웃는다. 나는 이미 "재미없는 애"가 됐다. 자나까지 잃을 수는 없다.` } },
-      { choice: 'accept', text: { en: `I stop hinting. I tell her plainly: what happened to me wasn’t “doing it.” It was something done to me.`, ko: `더는 돌려 말하지 않는다. 자나에게 분명히 말한다. 나한테 일어난 일은 그걸 "한" 게 아니었다고. 누군가 나한테 저지른 일이었다고.` } },
-      { choice: 'mixed', text: { en: `I thank her, but say it makes me uncomfortable and leave out why. I keep it up because I have nowhere else to put it, and I hope she asks.`, ko: `고맙다고는 하지만, 이 그림을 보면 불편하다고 말한다. 이유는 말하지 않는다. 달리 걸 곳이 없어서 그림은 그대로 두고, 자나가 먼저 물어봐 주기를 바란다.` } },
+      { choice: 'deny', text: { en: `I tell her I love it and laugh like the old me. I’m already the “no fun” one, and I can’t lose her too.`, ko: `정말 마음에 든다고 말하고, 예전의 나처럼 웃는다. 나는 이미 "재미없는 애"가 됐다. 자나까지 잃을 수는 없다.` }, response: { en: `You swallowed the lump in your throat and laughed like you always do, like the old times. That’s better.`, ko: `목이 메는 걸 꾹 삼키고, 늘 그랬듯이 예전처럼 웃었어요. 이게 더 나아요.` } },
+      { choice: 'accept', text: { en: `I stop hinting. I tell her plainly: what happened to me wasn’t “doing it.” It was something done to me.`, ko: `더는 돌려 말하지 않는다. 자나에게 분명히 말한다. 나한테 일어난 일은 그걸 "한" 게 아니었다고. 누군가 나한테 저지른 일이었다고.` }, response: { en: `The room goes quiet. Jana’s smile is gone. You finally said it, but you feel so judged. That happens when things get heavy.`, ko: `방 안이 조용해져요. 자나의 미소가 사라졌어요. 마침내 말했는데, 왠지 평가받는 기분이 들어요. 이야기가 무거워지면 원래 그래요.` } },
+      { choice: 'mixed', text: { en: `I thank her, but say it makes me uncomfortable and leave out why. I keep it up because I have nowhere else to put it, and I hope she asks.`, ko: `고맙다고는 하지만, 이 그림을 보면 불편하다고 말한다. 이유는 말하지 않는다. 달리 걸 곳이 없어서 그림은 그대로 두고, 자나가 먼저 물어봐 주기를 바란다.` }, response: { en: `Jana says “okay, weird” and changes the subject. You wait for the question anyway, a little longer than you should. Nobody asks.`, ko: `자나는 “응… 좀 이상하네” 하고는 다른 이야기로 넘어가요. 그래도 당신은 혹시나 하고 그 질문을 기다려요. 조금 너무 오래. 아무도 묻지 않아요.` } },
     ],
   },
   {
@@ -199,9 +200,9 @@ export const STATIONS: Station[] = [
       ko: `트로피는 모두가 볼 수 있는 선반 위에 있어요. 다들 자랑스러워해야 한다고 말하지만, {name}, 당신은 일어난 일을 끝내 다 적지 못했어요.`,
     },
     options: [
-      { choice: 'deny', text: { en: `I leave the trophy where everyone can see it and smile when they congratulate me. I laughed along with the jokes so they wouldn’t be about me, and I can keep doing that. It stays small.`, ko: `트로피는 모두가 볼 수 있는 곳에 그대로 두고, 축하를 받으면 웃는다. 나를 향한 농담이 아닌 척하려고 같이 웃었던 것처럼, 앞으로도 그렇게 할 수 있다. 별일 아닌 걸로 남겨 두면 된다.` } },
-      { choice: 'accept', text: { en: `I write all of it, including the night, with dates and what he and the instructor said. Then I hide it behind the trophy, because everyone looks at the trophy but never asked the story behind it.`, ko: `그날 밤까지 전부 적는다. 날짜도, 그와 지도 선생님이 했던 말도. 그리고 그 기록을 트로피 뒤에 숨겨 둔다. 모두가 트로피는 쳐다보지만, 그 뒤에 어떤 이야기가 있는지는 아무도 물어본 적이 없으니까.` } },
-      { choice: 'mixed', text: { en: `I write only what I can stand to: the comments, the instructor brushing me off, the shared rooms. The night itself I leave blank, for now.`, ko: `견딜 수 있는 만큼만 적는다. 그 말들, 내 말을 흘려듣던 지도 선생님, 따로 주지 않았던 방. 그날 밤은 일단 비워 둔다.` } },
+      { choice: 'deny', text: { en: `I leave the trophy where everyone can see it and smile when they congratulate me. I laughed along with the jokes so they wouldn’t be about me, and I can keep doing that. If I don’t write it down, it stays small.`, ko: `트로피는 모두가 볼 수 있는 곳에 그대로 두고, 축하를 받으면 웃는다. 나를 향한 농담이 아닌 척하려고 같이 웃었던 것처럼, 앞으로도 그렇게 할 수 있다. 적지 않으면, 별일 아닌 걸로 남는다.` }, response: { en: `Someone taps your shoulder, congratulating you, saying they’re proud of you. You smile, but you don’t feel proud at all. That’s okay. Smiling is enough.`, ko: `누군가 당신의 어깨를 두드리며 축하해요. 정말 자랑스럽다고. 당신은 웃지만, 조금도 자랑스럽지 않아요. 괜찮아요. 웃는 것만으로도 충분해요.` } },
+      { choice: 'accept', text: { en: `I write all of it, including the night, with dates and what he and the instructor said. Then I hide it behind the trophy, because everyone looks at the trophy but never asks about the story behind it.`, ko: `그날 밤까지 전부 적는다. 날짜도, 그와 지도 선생님이 했던 말도. 그리고 그 기록을 트로피 뒤에 숨겨 둔다. 모두가 트로피는 쳐다보지만, 그 뒤에 어떤 이야기가 있는지는 아무도 묻지 않으니까.` }, response: { en: `The words on the paper are scribbled as your hand shakes uncontrollably, each word immortalized on the page. You have to remember. You cannot forget. Are you sure you want to keep all of it?`, ko: `손이 걷잡을 수 없이 떨려서 글씨가 삐뚤빼뚤해요. 한 글자 한 글자가 종이 위에 영원히 남아요. 기억해야 해요. 잊으면 안 돼요. 정말 이걸 전부 간직하고 싶은 거예요?` } },
+      { choice: 'mixed', text: { en: `I write only what I can stand to: the comments, the instructor brushing me off, the shared rooms. The night itself I leave blank, for now.`, ko: `견딜 수 있는 만큼만 적는다. 그 말들, 내 말을 흘려듣던 지도 선생님, 따로 주지 않았던 방. 그날 밤은 일단 비워 둔다.` }, response: { en: `You try writing something, but you leave out the bad parts, just the little things that upset you. You don’t think you can write the whole truth. Not everything needs to be said.`, ko: `무언가 적어 보려 하지만, 나쁜 부분은 빼고 마음 상했던 작은 일들만 적어요. 진실을 전부 적을 수는 없을 것 같아요. 모든 걸 다 말할 필요는 없어요.` } },
     ],
   },
   {
@@ -245,9 +246,9 @@ export const STATIONS: Station[] = [
       ko: `메일은 아직 열려 있어요. “학교 내부에서 원만히 해결되었다”고 적혀 있지만, 그가 무슨 짓을 했는지는 없어요. 성폭행이라는 말조차 없어요.`,
     },
     options: [
-      { choice: 'deny', text: { en: `I reply, “Thank you for looking into it.” He’s suspended and out of the club, so maybe that’s all someone like me gets. I go to practice, keep my head down, and let them whisper.`, ko: `"알아봐 주셔서 감사합니다."라고 답장한다. 그는 정학을 받았고 팀에서도 나갔으니, 나 같은 애가 받을 수 있는 건 이게 전부인지도 모른다. 연습에 나가 고개를 숙이고, 수군거리든 말든 그냥 둔다.` } },
-      { choice: 'mixed', text: { en: `I show my parents the email and tell them everything I haven’t. I’m scared of what they’ll say, but I’m more tired of carrying it alone.`, ko: `부모님께 메일을 보여 드리고, 아직 하지 못한 이야기를 전부 털어놓는다. 부모님이 뭐라고 하실지 무섭지만, 이걸 혼자 안고 있는 게 더 지쳤다.` } },
-      { choice: 'accept', text: { en: `I write back: “Resolved how? What did he do?” I remind them I have proof, and I keep a copy of everything. If they won’t name it, I will.`, ko: `답장을 쓴다. "무엇이 어떻게 해결되었다는 거죠? 그가 무슨 짓을 했는데요?" 나에게 증거가 있다는 걸 다시 알리고, 모든 자료의 사본을 남겨 둔다. 학교가 끝까지 그 일을 제대로 말하지 않는다면, 내가 말하겠다.` } },
+      { choice: 'deny', text: { en: `I reply, “Thank you for looking into it.” He’s suspended and out of the club, so maybe that’s all someone like me gets. I go to practice, keep my head down, and let them whisper.`, ko: `"알아봐 주셔서 감사합니다."라고 답장한다. 그는 정학을 받았고 팀에서도 나갔으니, 나 같은 애가 받을 수 있는 건 이게 전부인지도 모른다. 연습에 나가 고개를 숙이고, 수군거리든 말든 그냥 둔다.` }, response: { en: `You hate the reply button and slam your laptop shut. You wish you could feel something, fury, anger, but it feels numb, and that’s the scariest part. Numb is easier.`, ko: `답장 버튼을 누르고, 노트북을 쾅 닫아요. 분노든 화든 무언가 느껴지면 좋을 텐데, 아무 감각이 없어요. 그게 가장 무서워요. 무감각한 게 더 쉬워요.` } },
+      { choice: 'mixed', text: { en: `I show my parents the email and tell them everything I haven’t. I’m scared of what they’ll say, but I’m more tired of carrying it alone.`, ko: `부모님께 메일을 보여 드리고, 아직 하지 못한 이야기를 전부 털어놓는다. 부모님이 뭐라고 하실지 무섭지만, 이걸 혼자 안고 있는 게 더 지쳤다.` }, response: { en: `Your mom reads it twice, and at first, she doesn’t answer. You’re scared they don’t believe you. Their silence is the scariest part. Give them time.`, ko: `엄마는 메일을 두 번 읽고, 처음에는 아무 말도 하지 않아요. 부모님이 당신을 믿지 않을까 봐 무서워요. 그 침묵이 가장 무서워요. 시간을 좀 주세요.` } },
+      { choice: 'accept', text: { en: `I write back: “Resolved how? What did he do?” I remind them I have proof, and I keep a copy of everything. If they won’t name it, I will.`, ko: `답장을 쓴다. "무엇이 어떻게 해결되었다는 거죠? 그가 무슨 짓을 했는데요?" 나에게 증거가 있다는 걸 다시 알리고, 모든 자료의 사본을 남겨 둔다. 학교가 끝까지 그 일을 제대로 말하지 않는다면, 내가 말하겠다.` }, response: { en: `You press send before you can change your mind. You can’t back down. You need to believe justice is real. The school already said it was resolved.`, ko: `마음이 바뀌기 전에 전송 버튼을 눌러요. 이제 물러설 수 없어요. 정의가 있다고 믿어야만 해요. 학교는 이미 해결됐다고 했는데.` } },
     ],
   },
   {
@@ -283,9 +284,9 @@ export const STATIONS: Station[] = [
       ko: `친구들의 얼굴이 흐릿하게 지워져 있고, 당신의 얼굴도 그래요. 그들은 어딘가에 아직 있지만, 아무도 아무 말도 하지 않아요.`,
     },
     options: [
-      { choice: 'mixed', text: { en: `I let one new person in, slowly. I’m terrified it will end the same way, but I can’t stay alone forever.`, ko: `새로운 사람 한 명에게만, 천천히 마음을 열어 본다. 또 똑같이 끝날까 봐 무섭지만, 언제까지나 혼자 있을 수는 없다.` } },
-      { choice: 'accept', text: { en: `I stop believing people just because it’s easier. I ask the group why they looked away, because I want them to say it to my face.`, ko: `편하다는 이유로 사람들 말을 믿는 건 이제 그만둔다. 그 무리에게 왜 모른 척했는지 묻는다. 내 앞에서 직접 말하게 하고 싶으니까.` } },
-      { choice: 'deny', text: { en: `I go back to them and act like nothing happened. A group that doesn’t believe me is still better than eating alone.`, ko: `다시 그들에게 돌아가 아무 일도 없었던 척한다. 나를 믿어 주지 않는 무리라도, 혼자 밥 먹는 것보다는 낫다.` } },
+      { choice: 'mixed', text: { en: `I let one new person in, slowly. I’m terrified it will end the same way, but I can’t stay alone forever.`, ko: `새로운 사람 한 명에게만, 천천히 마음을 열어 본다. 또 똑같이 끝날까 봐 무섭지만, 언제까지나 혼자 있을 수는 없다.` }, response: { en: `Somebody sits next to you at lunch and asks your name. You answer quietly and allow them to stay. For now.`, ko: `점심시간에 누군가 옆자리에 앉아 이름을 물어요. 당신은 조용히 대답하고, 그 사람이 곁에 있게 둬요. 일단은.` } },
+      { choice: 'accept', text: { en: `I stop believing people just because it’s easier. I ask the group why they looked away, because I want them to say it to my face.`, ko: `편하다는 이유로 사람들 말을 믿는 건 이제 그만둔다. 그 무리에게 왜 모른 척했는지 묻는다. 내 앞에서 직접 말하게 하고 싶으니까.` }, response: { en: `Nobody answers, at least not a real one. Excuses after excuses. In the end, they only wanted to keep the peace.`, ko: `아무도 대답하지 않아요. 적어도 진짜 대답은요. 변명에 변명만 이어져요. 결국 그들은 그저 조용히 넘어가고 싶었을 뿐이에요.` } },
+      { choice: 'deny', text: { en: `I go back to them and act like nothing happened. A group that doesn’t believe me is still better than eating alone.`, ko: `다시 그들에게 돌아가 아무 일도 없었던 척한다. 나를 믿어 주지 않는 무리라도, 혼자 밥 먹는 것보다는 낫다.` }, response: { en: `You go back to sit with the group. They all smile like nothing ever happened, like the good old times. You find it harder to laugh at their jokes. That will pass.`, ko: `다시 그 무리에 가서 앉아요. 다들 아무 일도 없었다는 듯 웃어요. 좋았던 예전처럼. 그런데 그들의 농담에 웃기가 점점 힘들어요. 곧 괜찮아질 거예요.` } },
     ],
   },
 ]
