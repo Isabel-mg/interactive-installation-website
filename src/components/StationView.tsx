@@ -78,8 +78,15 @@ export default function StationView({ id, go }: { id: number; go: (v: View) => v
     play('choice')
     j.choose(id, c)
     const othersDone = STATIONS.every((s) => s.id === id || j.choices[s.id])
-    if (othersDone) say(LINES.allDone)
+    // the "all done" line waits until the folder is closed (see the effect below)
+    if (othersDone && !choice) allDonePending.current = true
   }
+
+  // last folder answered: the narrator speaks once the visitor leaves this page
+  const allDonePending = useRef(false)
+  useEffect(() => () => {
+    if (allDonePending.current) setTimeout(() => say(LINES.allDone), 700)
+  }, [])
 
   return (
     <div className="rise">
