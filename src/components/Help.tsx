@@ -28,8 +28,8 @@ const STEPS: { head: L; body: L }[] = [
   {
     head: { en: 'Find the word', ko: '단어를 찾으세요' },
     body: {
-      en: 'The word is hidden on an object in the exhibition, near each station. Look closely around you. Stuck? Tap "feeling lost?" on the folder for a hint.',
-      ko: '단어는 각 스테이션 근처, 전시 속 물건에 숨겨져 있습니다. 주변을 자세히 살펴보세요. 막혔다면 폴더의 힌트 버튼을 누르세요.',
+      en: 'Each station has its own word, hidden on one of its objects. Look closely around you. Stuck? Tap "feeling lost?" on the folder for a hint.',
+      ko: '스테이션마다 고유한 단어가 있으며, 그 스테이션의 물건 중 하나에 숨겨져 있습니다. 주변을 자세히 살펴보세요. 막혔다면 폴더의 힌트 버튼을 누르세요.',
     },
   },
   {

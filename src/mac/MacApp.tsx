@@ -68,7 +68,7 @@ const X = {
   },
   computerBody: { en: 'System status: fine.\nEverything is fine.', ko: '시스템 상태: 정상.\n모든 게 괜찮습니다.' } as L,
   downloadsBody: { en: '(empty)\n\nNothing was ever saved.', ko: '(비어 있음)\n\n저장된 것은 없습니다.' } as L,
-  internetBody: { en: 'No connection.\nNobody is coming.', ko: '연결 없음.\n아무도 오지 않습니다.' } as L,
+  internetBody: { en: 'No connection.\nThere is only you.', ko: '연결 없음.\n여기엔 당신뿐입니다.' } as L,
   trashBody: { en: '1 item.\n\n"it was just a little thing"', ko: '항목 1개.\n\n"별일 아니었어"' } as L,
 }
 

@@ -78,7 +78,7 @@ export function JournalProvider({ children }: { children: ReactNode }) {
     [],
   )
   const choose = useCallback(
-    (id: number, c: Choice) => setS((p) => (p.choices[id] ? p : { ...p, choices: { ...p.choices, [id]: c } })),
+    (id: number, c: Choice) => setS((p) => (p.choices[id] && import.meta.env.VITE_HIDE_DEV === '1' ? p : { ...p, choices: { ...p.choices, [id]: c } })),
     [],
   )
   const findSecret = useCallback(() => setS((p) => ({ ...p, secretFound: true })), [])

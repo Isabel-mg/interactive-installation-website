@@ -10,6 +10,9 @@ import No from './No'
 import InlineNarrator from './InlineNarrator'
 import LogImage from './LogImage'
 
+// dev version only: answers can be changed for testing; the visitor version keeps them final
+const DEV_EDIT = import.meta.env.VITE_HIDE_DEV !== '1'
+
 export default function StationView({ id, go }: { id: number; go: (v: View) => void }) {
   const station = STATIONS.find((s) => s.id === id)!
   const j = useJournal()
@@ -193,12 +196,12 @@ export default function StationView({ id, go }: { id: number; go: (v: View) => v
                         <button
                           key={c}
                           onClick={() => answer(c)}
-                          disabled={!!choice}
+                          disabled={!!choice && !DEV_EDIT}
                           aria-pressed={picked}
                           className={`prose-body border border-rule px-3 py-3 text-left transition-colors ${
                             picked
                               ? 'bg-btn text-btn-ink'
-                              : choice
+                              : choice && !DEV_EDIT
                                 ? 'opacity-40'
                                 : 'hover:bg-btn hover:text-btn-ink focus-visible:bg-btn focus-visible:text-btn-ink'
                           }`}
