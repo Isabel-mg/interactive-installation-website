@@ -9,6 +9,7 @@
 
 import type { L, LS } from '../i18n'
 import painting from '../assets/painting.jpg'
+import mirror from '../assets/mirror.jpg'
 
 export type Choice = 'deny' | 'mixed' | 'accept'
 
@@ -265,6 +266,11 @@ export const STATIONS: Station[] = [
       ko: `거울 주변을 자세히 살펴보세요. 사진들 사이에 붙은, 그녀의 글씨로 쓴 작은 쪽지가 있어요.`,
     },
     logDate: { en: 'September 1st', ko: '9월 1일' },
+    image: {
+      src: mirror,
+      alt: { en: 'A tall mirror with photo-booth strips, a note, a graduation sash and cap hung on its frame', ko: '스티커 사진, 쪽지, 졸업 띠와 학사모가 걸린 긴 거울' },
+      caption: { en: 'The mirror', ko: '거울' },
+    },
     log: {
       en: [
         `There were days when I felt happy that I had found a place where I belonged. I believed whatever they said without stopping to think about my own thoughts and morals. It was just easier that way, easier to feel like I belonged somewhere.`,
