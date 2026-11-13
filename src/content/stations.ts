@@ -29,7 +29,7 @@ export interface Station {
   // the three answers, in display order. Points come from the choice (deny 0, mixed 1, accept 2)
   // response = the narrator's line shown after that answer is chosen
   options?: { choice: Choice; text: L; response?: L }[]
-  image?: { src: string; alt: L; caption: L }
+  image?: { src: string; alt: L; caption?: L }
 }
 
 export const STATIONS: Station[] = [
@@ -269,7 +269,6 @@ export const STATIONS: Station[] = [
     image: {
       src: mirror,
       alt: { en: 'A tall mirror with photo-booth strips, a note, a graduation sash and cap hung on its frame', ko: '스티커 사진, 쪽지, 졸업 띠와 학사모가 걸린 긴 거울' },
-      caption: { en: 'The mirror', ko: '거울' },
     },
     log: {
       en: [

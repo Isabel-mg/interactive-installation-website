@@ -168,7 +168,7 @@ export default function StationView({ id, go }: { id: number; go: (v: View) => v
           </p>
           <h2 className="mb-5 mt-1 font-display text-[38px] leading-[1]">{tx(station.title)}</h2>
           <div className="dots-ink mb-5 h-2 opacity-40" />
-          {station.image && <LogImage src={station.image.src} alt={tx(station.image.alt)} caption={tx(station.image.caption)} />}
+          {station.image && <LogImage src={station.image.src} alt={tx(station.image.alt)} caption={station.image.caption && tx(station.image.caption)} />}
 
           {/* key on lang so the log re-renders cleanly when the language is switched */}
           <Typewriter key={lang} paragraphs={txs(station.log)} instant={!!choice || typed} onDone={() => {
