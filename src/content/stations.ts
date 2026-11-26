@@ -96,8 +96,8 @@ export const STATIONS: Station[] = [
       ko: `여기에 무언가 있을 거야... 누군가 내가 찾도록 남겨둔 무언가가.`,
     },
     hint: {
-      en: `Someone left a note on the empty box, so read what they told her.`,
-      ko: `누군가 빈 상자에 쪽지를 남겼어요. 그들이 그녀에게 뭐라고 했는지 읽어 보세요.`,
+      en: `Someone left a note on the empty box, so read what they told you.`,
+      ko: `누군가 빈 상자에 쪽지를 남겼어요. 그들이 당신에게 뭐라고 했는지 읽어 보세요.`,
     },
     logDate: { en: 'February 5th', ko: '2월 5일' },
     log: {
@@ -137,8 +137,8 @@ export const STATIONS: Station[] = [
       ko: `그림 근처에 무언가 있을 거야... 웃음과 함께 온 무언가가.`,
     },
     hint: {
-      en: `Someone wished her a happy birthday, so find the card and read it closely.`,
-      ko: `누군가 그녀에게 생일 축하를 전했어요. 카드를 찾아서 자세히 읽어 보세요.`,
+      en: `Someone wished you a happy birthday, so find the card and read it closely.`,
+      ko: `누군가 당신에게 생일 축하를 전했어요. 카드를 찾아서 자세히 읽어 보세요.`,
     },
     logDate: { en: 'March 20th', ko: '3월 20일' },
     image: {
@@ -262,8 +262,8 @@ export const STATIONS: Station[] = [
       ko: `여기에 무언가 있을 거야... 예전의 내가 누구였는지 보여 주는 무언가가.`,
     },
     hint: {
-      en: `Look closely around the mirror for a small note in her handwriting, stuck among the photos.`,
-      ko: `거울 주변을 자세히 살펴보세요. 사진들 사이에 붙은, 그녀의 글씨로 쓴 작은 쪽지가 있어요.`,
+      en: `Look closely around the mirror for a small note in your handwriting, stuck among the photos.`,
+      ko: `거울 주변을 자세히 살펴보세요. 사진들 사이에 붙은, 당신의 글씨로 쓴 작은 쪽지가 있어요.`,
     },
     logDate: { en: 'September 1st', ko: '9월 1일' },
     image: {

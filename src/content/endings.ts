@@ -46,7 +46,7 @@ export const ENDINGS: Record<EndingKey, { title: L; passcode: L; video: string; 
     log: {
       en: [
         `I don't know why it took me so long to realize this wasn't normal. My best friend kept telling me to drop it, but I knew it wasn't right. Nobody should be treated like this. So I told my parents… It took a while, but after they put me in therapy, I slowly began to understand how deeply this had affected me.`,
-        `Maybe I should have done more. He's still out there, now in university. Maybe some other girl is being harassed by him right now. I know I shouldn't feel guilty, but I realized too late.`,
+        `Maybe I should have done more. He's still out there, now in university. Maybe someone else is being harassed by him right now. I know I shouldn't feel guilty, but I realized too late.`,
         `I hope I can spread awareness through my experience. I've been to a couple of group sessions where I help others who went through the same thing realize that they shouldn't be ashamed, or pressured into believing they have to live in silence. Maybe this way, I can make a small difference… And I hope karma comes for him someday.`,
       ],
       ko: [
@@ -64,7 +64,7 @@ export const ENDINGS: Record<EndingKey, { title: L; passcode: L; video: string; 
     log: {
       en: [
         `They told me to let it go. Most people did nothing and stood on the sidelines. It's so easy to do nothing, to accept it, or even to ignore it. But how can things get better if justice isn't served to those who deserve it?`,
-        `I refuse to accept it. I refuse to accept whatever happened to me. What if some other girl had to go through this because I didn't do anything? I'd be just as guilty as him. I owe it to everybody, and especially to myself, to bring him to justice. If that means making everyone my enemy, so be it. They turned a blind eye for their own comfort, and for the comfort of others, just because it was easier. But that's not going to be me. Not anymore.`,
+        `I refuse to accept it. I refuse to accept whatever happened to me. What if someone else had to go through this because I didn't do anything? I'd be just as guilty as him. I owe it to everybody, and especially to myself, to bring him to justice. If that means making everyone my enemy, so be it. They turned a blind eye for their own comfort, and for the comfort of others, just because it was easier. But that's not going to be me. Not anymore.`,
         `I broke off my friendship with my best friend, and I went against the school's wishes. The media recorded my story, and now it's on the news and all over social media. His family is livid and is trying to sue me, but I won't back down. I was promised protection, yet I've been scrutinized and shamed. At the same time, many people have risen to support me, and there have been demonstrations.`,
         `But I can't help feeling empty. It still hurts. The pain is still there. I can feel it. At least I can say I've done something.`,
       ],
