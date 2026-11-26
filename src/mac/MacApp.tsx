@@ -308,9 +308,12 @@ function Desktop() {
       {/* desktop icons */}
       <div className="absolute inset-x-0 top-[38%] z-10 flex justify-center gap-10 text-ink">
         {icon('journal', X.journal, <JournalIcon />, !ending)}
+      </div>
+      {/* right column: Help, then the Video Player below it, clear of the journal window */}
+      <div className="absolute right-4 top-[72px] z-10 flex flex-col items-center gap-6 text-ink">
+        {icon('help', X.help, <HelpIcon />)}
         {icon('player', X.player, <PlayerIcon />, logDone && !playing && !!data?.video)}
       </div>
-      <div className="absolute right-4 top-[72px] z-10 text-ink">{icon('help', X.help, <HelpIcon />)}</div>
       <div className="absolute bottom-4 left-4 z-10 flex gap-4 text-ink md:bottom-auto md:top-[330px] md:flex-col">
         {icon('computer', X.computer, <ComputerIcon />)}
         {icon('downloads', X.downloads, <FolderIcon />)}
