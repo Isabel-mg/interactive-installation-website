@@ -44,8 +44,8 @@ export const STATIONS: Station[] = [
       ko: `침대 위에 무언가 있을 거야... 너무 많이 안겨 닳아버린 무언가가.`,
     },
     hint: {
-      en: `Look for the doll that’s been held the most, and check it for a tag or label.`,
-      ko: `가장 많이 안긴 인형을 찾아서, 태그나 라벨이 있는지 확인해 보세요.`,
+      en: `Look for the oldest doll that’s been held the most, and check it for something unusual.`,
+      ko: `가장 오래되고 가장 많이 안긴 인형을 찾아서, 평소와 다른 점이 있는지 살펴보세요.`,
     },
     logDate: { en: 'January 14th', ko: '1월 14일' },
     log: {
