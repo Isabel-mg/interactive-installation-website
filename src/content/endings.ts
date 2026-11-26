@@ -26,7 +26,7 @@ export const ENDINGS: Record<EndingKey, { title: L; passcode: L; video: string; 
   deny: {
     title: { en: 'Ending 1 — Blind Ignorance', ko: '결말 1 — 맹목적 무지' },
     passcode: { en: 'ERASED', ko: 'ERASED' }, // TODO(CONTENT): final passcode
-    video: 'videos/ending-1-ignorance.mp4', // plays muted; the ending song loops underneath
+    video: 'videos/ending-1-blind-ignorance-full.mp4', // plays muted; the ending song loops underneath
     log: {
       en: [
         `There are those who fight through the dark just to glimpse the brilliance of the sun. But I think fighting what has already happened is a waste of time. I shouldn't take it so seriously, right? Everybody told me to chill out and stop thinking about it so hard. Maybe they're right. Maybe fighting back will only hurt more.`,
