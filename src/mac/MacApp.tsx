@@ -70,6 +70,49 @@ const X = {
   downloadsBody: { en: '(empty)\n\nNothing was ever saved.', ko: '(비어 있음)\n\n저장된 것은 없습니다.' } as L,
   internetBody: { en: 'No connection.\nThere is only you.', ko: '연결 없음.\n여기엔 당신뿐입니다.' } as L,
   trashBody: { en: '1 item.\n\n"it was just a little thing"', ko: '항목 1개.\n\n"별일 아니었어"' } as L,
+  creditsBy: { en: 'by TEAM TAco · 2026 ATC', ko: 'TEAM TAco · 2026 ATC' } as L,
+  // text-only ending (no animation)
+  textOnlyEnd: {
+    en: 'This ending has no animation. Your story ends here, in the journal.',
+    ko: '이 결말에는 애니메이션이 없습니다. 당신의 이야기는 이 일기에서 끝납니다.',
+  } as L,
+}
+
+// Shown under the video once it has finished
+const CREDITS: { name: string; role: L }[] = [
+  {
+    name: 'Isabel Mendoza Garcia',
+    role: {
+      en: 'Team Lead · Website & Interaction Design · Development · Sound Design',
+      ko: '팀장 · 웹사이트 및 인터랙션 디자인 · 개발 · 사운드 디자인',
+    },
+  },
+  {
+    name: 'JeeWoo Hyun (현지우)',
+    role: { en: 'Animation Director · Storyboarding', ko: '애니메이션 감독 · 스토리보드' },
+  },
+  {
+    name: 'Emily Rose Wuestenhagen',
+    role: { en: 'Narrative Design · Spatial Design · Video Editing', ko: '내러티브 디자인 · 공간 디자인 · 영상 편집' },
+  },
+]
+
+function Credits() {
+  const { tx } = useT()
+  return (
+    <div className="rise space-y-3 border-y border-dotted border-ink py-4 text-center">
+      <div>
+        <p className="font-display text-[24px] leading-none">___'s room</p>
+        <p className="label mt-1 text-[11px] opacity-70">{tx(X.creditsBy)}</p>
+      </div>
+      {CREDITS.map((c) => (
+        <div key={c.name}>
+          <p className="prose-body font-bold">{c.name}</p>
+          <p className="prose-body text-[13px] opacity-75">{tx(c.role)}</p>
+        </div>
+      ))}
+    </div>
+  )
 }
 
 function matchCode(raw: string, lang: 'en' | 'ko'): Ending | null {
@@ -265,7 +308,7 @@ function Desktop() {
       {/* desktop icons */}
       <div className="absolute inset-x-0 top-[38%] z-10 flex justify-center gap-10 text-ink">
         {icon('journal', X.journal, <JournalIcon />, !ending)}
-        {icon('player', X.player, <PlayerIcon />, logDone && !playing)}
+        {icon('player', X.player, <PlayerIcon />, logDone && !playing && !!data?.video)}
       </div>
       <div className="absolute right-4 top-[72px] z-10 text-ink">{icon('help', X.help, <HelpIcon />)}</div>
       <div className="absolute bottom-4 left-4 z-10 flex gap-4 text-ink md:bottom-auto md:top-[330px] md:flex-col">
@@ -288,6 +331,7 @@ function Desktop() {
                 logDone={logDone}
                 playing={playing}
                 video={data?.video}
+                creditsAt={(data as { creditsAt?: number } | null)?.creditsAt}
                 onGoJournal={() => openWin('journal')}
                 onPlay={() => setPlaying(true)}
                 onReset={reset}
@@ -304,7 +348,10 @@ function Desktop() {
                       instant={logDone}
                       onDone={() => setLogDone(true)}
                     />
-                    {logDone && <p className="prose-body rise mt-6 border-t border-dotted border-ink pt-3 italic opacity-75">{tx(X.nextStep)}</p>}
+                    {logDone && data.video && (
+                      <p className="prose-body rise mt-6 border-t border-dotted border-ink pt-3 italic opacity-75">{tx(X.nextStep)}</p>
+                    )}
+                    {logDone && !data.video && <TextOnlyEnd onReset={reset} />}
                   </>
                 ) : (
                   <PasscodeForm onUnlock={unlock} />
@@ -382,6 +429,7 @@ function Player({
   logDone,
   playing,
   video,
+  creditsAt,
   onGoJournal,
   onPlay,
   onReset,
@@ -390,14 +438,18 @@ function Player({
   logDone: boolean
   playing: boolean
   video?: string
+  creditsAt?: number
   onGoJournal: () => void
   onPlay: () => void
   onReset: () => void
 }) {
   const { tx } = useT()
+  const [ended, setEnded] = useState(false)
   const btn = 'label w-full rounded-lg border-[3px] border-ink bg-btn px-3 py-3 text-btn-ink active:translate-y-px'
 
   if (playing && video) {
+    // a local video says when it ends; a YouTube embed cannot, so its credits show at once
+    const showCredits = ended || !isLocalVideo(video)
     return (
       <div className="space-y-3 p-3">
         <div className="aspect-video w-full overflow-hidden rounded-lg border-[3px] border-ink bg-black">
@@ -411,6 +463,8 @@ function Player({
               controls
               controlsList="nodownload noplaybackrate"
               disablePictureInPicture
+              onEnded={() => setEnded(true)}
+              onTimeUpdate={(e) => creditsAt != null && e.currentTarget.currentTime >= creditsAt && setEnded(true)}
             />
           ) : (
           <iframe
@@ -422,9 +476,19 @@ function Player({
           />
           )}
         </div>
+        {showCredits && <Credits />}
         <button onClick={onReset} className={btn}>
           {tx(X.eject)}
         </button>
+      </div>
+    )
+  }
+
+  // text-only ending: nothing to play, the journal is the end
+  if (ending && logDone && !video) {
+    return (
+      <div className="px-4 py-5">
+        <TextOnlyEnd onReset={onReset} />
       </div>
     )
   }
@@ -453,6 +517,23 @@ function Player({
       <p className="prose-body opacity-80">{tx(ending ? X.readFirst : X.playerLockedBody)}</p>
       <button onClick={onGoJournal} className={btn}>
         {tx(X.openJournalBtn)}
+      </button>
+    </div>
+  )
+}
+
+// End of an ending that has no animation: a short note, the credits, and the reset button
+function TextOnlyEnd({ onReset }: { onReset: () => void }) {
+  const { tx } = useT()
+  return (
+    <div className="rise mt-6 space-y-4">
+      <p className="prose-body border-t border-dotted border-ink pt-3 italic opacity-75">{tx(X.textOnlyEnd)}</p>
+      <Credits />
+      <button
+        onClick={onReset}
+        className="label w-full rounded-lg border-[3px] border-ink bg-btn px-3 py-3 text-btn-ink active:translate-y-px"
+      >
+        {tx(X.eject)}
       </button>
     </div>
   )

@@ -16,17 +16,19 @@ export const MAX_SCORE = STATIONS.length * 2
 export type EndingKey = 'deny' | 'mixed' | 'accept'
 
 // Ending videos: a file in public/videos (e.g. 'videos/ending-1.mp4', plays muted with the ending song)
-// or a YouTube video id. PLACEHOLDER_VIDEO is used until an animation is ready.
+// or a YouTube video id. An empty string ('') means text only: no video, the journal ends the visit.
 export const PLACEHOLDER_VIDEO = 'dQw4w9WgXcQ'
 
 // Each ending has a passcode word. Phone folder 7 shows the word; the visitor types it on the
 // desk computer (/mac) to read the ending log and watch the animation. Either language works.
-export const ENDINGS: Record<EndingKey, { title: L; passcode: L; video: string; log: LS }> = {
+// creditsAt: second of the video when the credits appear (default: when the video ends)
+export const ENDINGS: Record<EndingKey, { title: L; passcode: L; video: string; creditsAt?: number; log: LS }> = {
   // score 0-4
   deny: {
     title: { en: 'Ending 1 — Blind Ignorance', ko: '결말 1 — 맹목적 무지' },
     passcode: { en: 'ERASED', ko: 'ERASED' }, // TODO(CONTENT): final passcode
     video: 'videos/ending-1-blind-ignorance-full.mp4', // plays muted; the ending song loops underneath
+    creditsAt: 30,
     log: {
       en: [
         `There are those who fight through the dark just to glimpse the brilliance of the sun. But I think fighting what has already happened is a waste of time. I shouldn't take it so seriously, right? Everybody told me to chill out and stop thinking about it so hard. Maybe they're right. Maybe fighting back will only hurt more.`,
@@ -42,7 +44,7 @@ export const ENDINGS: Record<EndingKey, { title: L; passcode: L; video: string; 
   mixed: {
     title: { en: 'Ending 2 — Acceptance', ko: '결말 2 — 수용' },
     passcode: { en: 'RESIGN', ko: 'RESIGN' }, // TODO(CONTENT): final passcode
-    video: PLACEHOLDER_VIDEO, // TODO(CONTENT): ending animation
+    video: 'videos/ending-2-acceptance.mp4', // plays muted; the ending song loops underneath
     log: {
       en: [
         `I don't know why it took me so long to realize this wasn't normal. My best friend kept telling me to drop it, but I knew it wasn't right. Nobody should be treated like this. So I told my parents… It took a while, but after they put me in therapy, I slowly began to understand how deeply this had affected me.`,
@@ -60,7 +62,7 @@ export const ENDINGS: Record<EndingKey, { title: L; passcode: L; video: string; 
   accept: {
     title: { en: 'Ending 3 — Whistleblower', ko: '결말 3 — 내부 고발자' },
     passcode: { en: 'LEAP OF FAITH', ko: 'LEAP OF FAITH' }, // TODO(CONTENT): final passcode
-    video: PLACEHOLDER_VIDEO, // TODO(CONTENT): ending animation
+    video: '', // no animation yet: the journal is the whole ending (text only)
     log: {
       en: [
         `They told me to let it go. Most people did nothing and stood on the sidelines. It's so easy to do nothing, to accept it, or even to ignore it. But how can things get better if justice isn't served to those who deserve it?`,
