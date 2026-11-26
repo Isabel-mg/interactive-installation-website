@@ -50,7 +50,7 @@ white border around it.
 | # | Station | Passkey |
 |---|---|---|
 | 1 | Bedroom · 침실 | `BOXED` |
-| 2 | Nightstand · 협탁 | `CHILL OUT` |
+| 2 | Bed Side Table · 침대 옆 협탁 | `CHILL OUT` |
 | 3 | The Painting · 그림 | `FUN` |
 | 4 | Bookshelf · 책장 | `FIRST PLACE` |
 | 5 | Graduation Gown · 졸업 가운 | `RESOLVED` |

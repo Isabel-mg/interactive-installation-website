@@ -88,7 +88,7 @@ export const STATIONS: Station[] = [
   },
   {
     id: 2,
-    title: { en: 'Nightstand', ko: '협탁' },
+    title: { en: 'Bed Side Table', ko: '침대 옆 협탁' },
     subtitle: { en: 'entry 02 / placeholder', ko: '기록 02 / 임시' },
     passkey: { en: 'CHILL OUT', ko: 'CHILL OUT' },
     desc: {
