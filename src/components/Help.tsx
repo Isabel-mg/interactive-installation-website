@@ -10,6 +10,10 @@ const TITLE: L = { en: 'How this room works', ko: '이 방 사용법' }
 const CLOSE: L = { en: 'Close', ko: '닫기' }
 const OPEN: L = { en: 'Help: how this works', ko: '도움말' }
 
+// Tutorial video shown at the top of the pop-up (Vimeo video id)
+const TUTORIAL_VIMEO_ID = '1245818847'
+const TUTORIAL: L = { en: 'Watch the tutorial', ko: '튜토리얼 영상' }
+
 const STEPS: { head: L; body: L }[] = [
   {
     head: { en: 'Enter your name', ko: '이름을 적으세요' },
@@ -90,6 +94,17 @@ export default function Help({ buttonClass }: { buttonClass: string }) {
                 </button>
               </div>
               <div className="overflow-y-auto px-4 py-4">
+                <p className="label mb-2">{TUTORIAL[lang]}</p>
+                <div className="mb-5 aspect-video w-full overflow-hidden border-2 border-rule bg-black">
+                  <iframe
+                    className="h-full w-full"
+                    src={`https://player.vimeo.com/video/${TUTORIAL_VIMEO_ID}?dnt=1&title=0&byline=0&portrait=0`}
+                    title={TUTORIAL[lang]}
+                    allow="autoplay; fullscreen; picture-in-picture"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                  />
+                </div>
                 <ol className="space-y-4">
                   {STEPS.map((s, i) => (
                     <li key={i} className="flex gap-3">
