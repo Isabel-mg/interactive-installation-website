@@ -32,7 +32,7 @@ export default function Folder({
       <span className="folder-back" />
 
       <span className="folder-paper">
-        <span className="label mb-0.5 block text-[9px] opacity-60" style={{ fontSize: 9 }}>
+        <span className="label mb-0.5 block text-[9px] font-bold" style={{ fontSize: 9, color: 'var(--entry)' }}>
           {t.folder} {String(num).padStart(2, '0')} · {title}
         </span>
         <span className={`line-clamp-3 block text-[13px] leading-[1.25] ${locked ? 'veil' : ''}`}>

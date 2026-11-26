@@ -47,6 +47,7 @@
   --glow: 0 0 8px color-mix(in srgb, #e8b6b9 55%, transparent);
   --vig: #23160e;
   --vig-amt: 90%;
+  --entry: color-mix(in srgb, #23160e 80%, #7a4850); /* "entry 03 · location" on folders */
 }
 [data-theme='dark'] {
   --desk: #140b06;
@@ -65,6 +66,7 @@
   --glow: 0 0 9px color-mix(in srgb, #e8b6b9 30%, transparent);
   --vig: #050201;
   --vig-amt: 100%;
+  --entry: #e8b6b9;
 }
 
 @theme inline {
