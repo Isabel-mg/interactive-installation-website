@@ -322,7 +322,7 @@ function Desktop() {
       {open.map((id, i) => {
         const title =
           id === 'player' && playing && data ? tx(data.title) : tx(X[id])
-        const width = id === 'player' && playing ? 640 : WIN_W[id]
+        const width = id === 'player' && playing ? videoWinWidth() : WIN_W[id]
         return (
           <Window key={id} title={title} width={width} cascade={i} z={20 + i} onFocus={() => focus(id)} onClose={() => close(id)}>
             {id === 'player' && (
@@ -349,7 +349,7 @@ function Desktop() {
                       onDone={() => setLogDone(true)}
                     />
                     {logDone && data.video && (
-                      <p className="prose-body rise mt-6 border-t border-dotted border-ink pt-3 italic opacity-75">{tx(X.nextStep)}</p>
+                      <p className="prose-body rise mt-6 border-t border-dotted border-ink pt-3 font-bold">{tx(X.nextStep)}</p>
                     )}
                     {logDone && !data.video && <TextOnlyEnd onReset={reset} />}
                   </>
@@ -520,6 +520,13 @@ function Player({
       </button>
     </div>
   )
+}
+
+// Width of the Video Player while the animation plays: up to 960px,
+// smaller on short screens so the video and the reset button fit without scrolling
+function videoWinWidth() {
+  const fitsHeight = Math.round((window.innerHeight - 300) * (16 / 9)) + 36
+  return Math.max(640, Math.min(960, fitsHeight))
 }
 
 // End of an ending that has no animation: a short note, the credits, and the reset button
