@@ -184,13 +184,13 @@ export const STATIONS: Station[] = [
     logDate: { en: 'April 29th', ko: '4월 29일' },
     log: {
       en: [
-        `I remember when I first joined the cross-country running team. Everybody was so accepting. I was one of the very few girls who took it seriously, and I was selected as one of the top runners who would participate in the competition. I was proud. I think that might have been the last time I felt proud of anything.`,
+        `I remember when I first joined the cross-country running team. Everybody was so accepting. I was one of the very few people who took it seriously, and I was selected as one of the top runners who would participate in the competition. I was proud. I think that might have been the last time I felt proud of anything.`,
         `I remember the guys whispering when they thought I couldn't hear them. At first, it was just stupid comments, but when I tried to ignore them and didn't react, they started getting bolder. At the center of everything, "he" was always the ringleader. He had always been direct with his comments, masking them as "jokes." The other boys would just laugh and join in. Sometimes I laughed too, just so it wouldn't feel like it was aimed at me.`,
         `It all culminated when we went to another city for the competition. That's when he started getting more aggressive with his advances. He said he was just complimenting my skills, but he started getting closer... I tried to tell the instructor what was happening, but he brushed it off, saying that he was just being friendly. I don't know why, but they didn't give us separate quarters. The excuse was probably money. So one night he just came and... I don't know if I wanna write this down.`,
         `We won that season and got this trophy, but I can't help but feel shame when I look at it. It sits on the shelf where everyone can see it, and everyone keeps telling me how proud I should be.`,
       ],
       ko: [
-        `크로스컨트리 팀에 처음 들어갔을 때가 기억난다. 모두가 나를 받아 주었다. 나는 이걸 진지하게 대하는 몇 안 되는 여자애 중 하나였고, 대회에 나갈 상위 선수로 뽑혔다. 자랑스러웠다. 무언가가 자랑스러웠던 건 그때가 마지막이었던 것 같다.`,
+        `크로스컨트리 팀에 처음 들어갔을 때가 기억난다. 모두가 나를 받아 주었다. 나는 이걸 진지하게 대하는 몇 안 되는 사람 중 하나였고, 대회에 나갈 상위 선수로 뽑혔다. 자랑스러웠다. 무언가가 자랑스러웠던 건 그때가 마지막이었던 것 같다.`,
         `남자애들이 내가 못 듣는 줄 알고 수군거리던 게 기억난다. 처음에는 그냥 시시한 말들이었는데, 내가 무시하고 반응하지 않자 점점 대담해졌다. 모든 일의 중심에는 언제나 "그"가 있었다. 그는 늘 노골적이었고, 그걸 "농담"인 척 포장했다. 다른 애들은 웃으며 따라 했다. 가끔은 나도 웃었다. 나를 겨냥한 말처럼 느껴지지 않게 하려고.`,
         `대회 때문에 다른 도시로 갔을 때 모든 게 터졌다. 그때부터 그의 접근은 더 노골적이 되었다. 그는 내 실력을 칭찬하는 거라고 했지만, 점점 더 가까이 다가왔다... 나는 지도 선생님에게 무슨 일이 벌어지고 있는지 말하려고 했다. 선생님은 그냥 친하게 지내려는 거라며 넘겨 버렸다. 왜인지 모르겠지만 우리에게 방을 따로 주지 않았다. 아마 돈 때문이라는 핑계였을 것이다. 그래서 어느 날 밤 그가 찾아와서... 이걸 적어도 될지 모르겠다.`,
         `그 시즌에 우리는 우승했고 이 트로피를 받았다. 하지만 이걸 볼 때마다 수치심이 드는 걸 어쩔 수 없다. 모두가 볼 수 있는 선반 위에 놓여 있고, 모두가 내가 얼마나 자랑스러워해야 하는지 말해 준다.`,
